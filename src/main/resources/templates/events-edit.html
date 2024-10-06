@@ -1,0 +1,73 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+  <title>Club Create</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+  <section layout:fragment="body" class="py-5">
+    <div class="container">
+      <form class="row g-3" role="form" method="post" th:action="@{/events/{eventId}/edit(eventId=${eventId})}" th:object="${event}">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Event Name</label>
+          <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  th:field="*{name}"
+                  placeholder="Event Name">
+          <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}"></p>
+        </div>
+        <div class="col-md-6">
+          <label for="type" class="form-label">Event Type</label>
+          <input
+                  type="text"
+                  class="form-control"
+                  id="type"
+                  name="type"
+                  th:field="*{type}"
+                  placeholder="Event Type">
+
+        </div>
+        <div class="col-12">
+          <label for="photoUrl" class="form-label">Photo Url</label>
+          <input
+                  type="text"
+                  class="form-control"
+                  id="photoUrl"
+                  name="photoUrl"
+                  th:field="*{photoUrl}"
+                  placeholder="photoUrl">
+        </div>
+        <div class="col-12">
+          <label for="startTime" class="form-label">Start Time</label>
+          <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="startTime"
+                  name="Start Time"
+                  th:field="*{startTime}"
+                  placeholder="startTime">
+        </div>
+        <div class="col-12">
+          <label for="endTime" class="form-label">End Time</label>
+          <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="endTime"
+                  name="End Time"
+                  th:field="*{endTime}"
+                  placeholder="endTime">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
